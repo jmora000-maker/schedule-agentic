@@ -77,7 +77,7 @@
     "case_id": "case-VENDOR_DELAY-TASK-4",
     "finding_id": "VENDOR_DELAY-TASK-4",
     "title": "task UID 4 and milestone 7 - vendor_risk",
-    "summary": "Vendor task 'Vendor Delivery' has been delayed, impacting the project schedule.",
+    "summary": "Vendor task 'Vendor Delivery' has vendor-related risk signals due to a schedule slip.",
     "severity": "high",
     "confidence": 0.75,
     "impacted_tasks": [
