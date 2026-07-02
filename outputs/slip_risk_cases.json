@@ -1,0 +1,320 @@
+[
+  {
+    "case_id": "case-DEPENDENCY_DELAY-TASK-3",
+    "finding_id": "DEPENDENCY_DELAY-TASK-3",
+    "title": "task UID 3 and milestone 7 - schedule_delay",
+    "summary": "Task 'Build' is impacted by delayed predecessor(s).",
+    "severity": "critical",
+    "confidence": 0.75,
+    "impacted_tasks": [
+      "3"
+    ],
+    "impacted_milestones": [
+      "7"
+    ],
+    "evidence": [
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal milestone_drift: The Build phase is now estimated to complete on January 21, 2026. Vendor Delivery is anticipated on January 23, 2026. The Integration and Test phase (baseline Jan 20\u201327, 2026) is now estimated to run from January 26\u2013February 2, 2026. This represents a significant 'critical path impact' and a severe 'milestone at risk' situation for the Production Signoff Milestone (baseline Jan 30, 2026). Our 'schedule confidence reduced' dramatically due to these accumulated delays. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal rework_signal: A high volume of critical defects has been reported during early integration builds, causing a significant 'defect backlog increasing'. Key approvals required for provisioning the production deployment infrastructure are still 'approval pending'. Furthermore, a critical 'action item slipped' for Vendor B regarding required documentation for compliance.",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Build, Start: 2026-01-13T08:00:00, Finish: 2026-01-21T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal milestone_drift: The Requirements/planning phase (baseline Jan 6\u20139, 2026) is showing initial drag, with the current estimate extending to January 12, 2026. This indicates a potential 'target date at risk' for subsequent activities. The overall Production Signoff Milestone (baseline Jan 30, 2026) is deemed a 'milestone at risk' if current trends persist. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal dependency_delay: The Requirements/planning phase officially completed on January 12, 2026. The Build phase started on January 13, 2026, already experiencing a 'dependency delay' from the extended Requirements/planning. The Build phase (baseline Jan 10\u201316, 2026) is currently estimated to complete on January 21, 2026. Vendor Delivery (baseline Jan 10\u201317, 2026) is also showing signs of 'vendor delivery delay', with current estimates pushing it to January 23, 2026. The Production Signoff Milestone (baseline Jan 30, 2026) is now clearly a 'milestone at risk' due to these accumulating delays. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal milestone_drift: The Integration and Test phase was completed on February 2, 2026. The Readiness review, originally baseline Jan 28\u201330, 2026, is now scheduled for February 3\u20135, 2026. The Production Signoff Milestone, originally baseline January 30, 2026, has officially slipped. The new target date for Production Signoff is now confirmed as February 6, 2026. This confirms the 'critical path impact' and the 'target date at risk' has materialized. Overall 'schedule confidence reduced' to low before the revised plan. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Requirements and Design, Start: 2026-01-06T08:00:00, Finish: 2026-01-12T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Integration and Test, Start: 2026-01-26T08:00:00, Finish: 2026-02-02T17:00:00",
+        "relevance": null
+      }
+    ],
+    "status": "new",
+    "recommended_action": {
+      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "owner_role": "Project Manager",
+      "due_date": "Next working day",
+      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+    },
+    "metadata": {
+      "source": "case_builder_phase_1"
+    }
+  },
+  {
+    "case_id": "case-VENDOR_DELAY-TASK-4",
+    "finding_id": "VENDOR_DELAY-TASK-4",
+    "title": "task UID 4 and milestone 7 - vendor_risk",
+    "summary": "Vendor task 'Vendor Delivery' is delayed, impacting project schedule due to vendor-related risks.",
+    "severity": "high",
+    "confidence": 0.75,
+    "impacted_tasks": [
+      "4"
+    ],
+    "impacted_milestones": [
+      "7"
+    ],
+    "evidence": [
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal dependency_delay: dependency delay, vendor delivery delay, environment instability, milestone at risk",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Vendor Delivery, Start: 2026-01-13T08:00:00, Finish: 2026-01-23T17:00:00",
+        "relevance": null
+      }
+    ],
+    "status": "new",
+    "recommended_action": {
+      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "owner_role": "Project Manager",
+      "due_date": "Next working day",
+      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+    },
+    "metadata": {
+      "source": "case_builder_phase_1"
+    }
+  },
+  {
+    "case_id": "case-DEPENDENCY_DELAY-TASK-5",
+    "finding_id": "DEPENDENCY_DELAY-TASK-5",
+    "title": "task UID 5 and milestone 7 - schedule_delay",
+    "summary": "Task 'Integration and Test' is impacted by delayed predecessor(s).",
+    "severity": "critical",
+    "confidence": 0.75,
+    "impacted_tasks": [
+      "5"
+    ],
+    "impacted_milestones": [
+      "7"
+    ],
+    "evidence": [
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal milestone_drift: The Integration and Test phase was completed on February 2, 2026. The Readiness review, originally baseline Jan 28\u201330, 2026, is now scheduled for February 3\u20135, 2026. The Production Signoff Milestone, originally baseline January 30, 2026, has officially slipped. The new target date for Production Signoff is now confirmed as February 6, 2026. This confirms the 'critical path impact' and the 'target date at risk' has materialized. Overall 'schedule confidence reduced' to low before the revised plan. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Integration and Test, Start: 2026-01-26T08:00:00, Finish: 2026-02-02T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal milestone_drift: The Build phase is now estimated to complete on January 21, 2026. Vendor Delivery is anticipated on January 23, 2026. The Integration and Test phase (baseline Jan 20\u201327, 2026) is now estimated to run from January 26\u2013February 2, 2026. This represents a significant 'critical path impact' and a severe 'milestone at risk' situation for the Production Signoff Milestone (baseline Jan 30, 2026). Our 'schedule confidence reduced' dramatically due to these accumulated delays. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal rework_signal: A high volume of critical defects has been reported during early integration builds, causing a significant 'defect backlog increasing'. Key approvals required for provisioning the production deployment infrastructure are still 'approval pending'. Furthermore, a critical 'action item slipped' for Vendor B regarding required documentation for compliance.",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal dependency_delay: dependency delay, vendor delivery delay, environment instability, milestone at risk",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Build, Start: 2026-01-13T08:00:00, Finish: 2026-01-21T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Vendor Delivery, Start: 2026-01-13T08:00:00, Finish: 2026-01-23T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Deployment Readiness, Start: 2026-02-03T08:00:00, Finish: 2026-02-05T17:00:00",
+        "relevance": null
+      }
+    ],
+    "status": "new",
+    "recommended_action": {
+      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "owner_role": "Project Manager",
+      "due_date": "Next working day",
+      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+    },
+    "metadata": {
+      "source": "case_builder_phase_1"
+    }
+  },
+  {
+    "case_id": "case-READINESS_RISK-TASK-6",
+    "finding_id": "READINESS_RISK-TASK-6",
+    "title": "task UID 6 and milestone 7 - readiness_risk",
+    "summary": "The 'Deployment Readiness' task is at risk due to delays in upstream tasks, impacting the project timeline.",
+    "severity": "high",
+    "confidence": 0.65,
+    "impacted_tasks": [
+      "6"
+    ],
+    "impacted_milestones": [
+      "7"
+    ],
+    "evidence": [
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Deployment Readiness, Start: 2026-02-03T08:00:00, Finish: 2026-02-05T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal milestone_drift: The Integration and Test phase was completed on February 2, 2026. The Readiness review, originally baseline Jan 28\u201330, 2026, is now scheduled for February 3\u20135, 2026. The Production Signoff Milestone, originally baseline January 30, 2026, has officially slipped. The new target date for Production Signoff is now confirmed as February 6, 2026. This confirms the 'critical path impact' and the 'target date at risk' has materialized. Overall 'schedule confidence reduced' to low before the revised plan. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Integration and Test, Start: 2026-01-26T08:00:00, Finish: 2026-02-02T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Production Signoff Milestone, Start: 2026-02-06T17:00:00, Finish: 2026-02-06T17:00:00",
+        "relevance": null
+      }
+    ],
+    "status": "new",
+    "recommended_action": {
+      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "owner_role": "Project Manager",
+      "due_date": "Next working day",
+      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+    },
+    "metadata": {
+      "source": "case_builder_phase_1"
+    }
+  },
+  {
+    "case_id": "case-DEPENDENCY_DELAY-TASK-7",
+    "finding_id": "DEPENDENCY_DELAY-TASK-7",
+    "title": "task UID 7 and milestone 7 - schedule_delay",
+    "summary": "Task 'Production Signoff Milestone' is impacted by delayed predecessor(s).",
+    "severity": "high",
+    "confidence": 0.7,
+    "impacted_tasks": [
+      "7"
+    ],
+    "impacted_milestones": [
+      "7"
+    ],
+    "evidence": [
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Production Signoff Milestone, Start: 2026-02-06T17:00:00, Finish: 2026-02-06T17:00:00",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Deployment Readiness, Start: 2026-02-03T08:00:00, Finish: 2026-02-05T17:00:00",
+        "relevance": null
+      }
+    ],
+    "status": "new",
+    "recommended_action": {
+      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "owner_role": "Project Manager",
+      "due_date": "Next working day",
+      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+    },
+    "metadata": {
+      "source": "case_builder_phase_1"
+    }
+  },
+  {
+    "case_id": "case-STALE_UPDATES-TASK-2",
+    "finding_id": "STALE_UPDATES-TASK-2",
+    "title": "task UID 2 and milestone 7 - status_risk",
+    "summary": "Task 'Requirements and Design' has stale updates or health issues.",
+    "severity": "high",
+    "confidence": 0.75,
+    "impacted_tasks": [
+      "2"
+    ],
+    "impacted_milestones": [
+      "7"
+    ],
+    "evidence": [
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal milestone_drift: The Requirements/planning phase (baseline Jan 6\u20139, 2026) is showing initial drag, with the current estimate extending to January 12, 2026. This indicates a potential 'target date at risk' for subsequent activities. The overall Production Signoff Milestone (baseline Jan 30, 2026) is deemed a 'milestone at risk' if current trends persist. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "meeting_note_signal",
+        "source_id": "meeting_notes_v3.docx",
+        "quote": "Signal dependency_delay: The Requirements/planning phase officially completed on January 12, 2026. The Build phase started on January 13, 2026, already experiencing a 'dependency delay' from the extended Requirements/planning. The Build phase (baseline Jan 10\u201316, 2026) is currently estimated to complete on January 21, 2026. Vendor Delivery (baseline Jan 10\u201317, 2026) is also showing signs of 'vendor delivery delay', with current estimates pushing it to January 23, 2026. The Production Signoff Milestone (baseline Jan 30, 2026) is now clearly a 'milestone at risk' due to these accumulating delays. This schedule alignment is sourced from the user's uploaded artifact",
+        "relevance": null
+      },
+      {
+        "source_type": "schedule_task",
+        "source_id": "compact_schedule.xml",
+        "quote": "Task: Requirements and Design, Start: 2026-01-06T08:00:00, Finish: 2026-01-12T17:00:00",
+        "relevance": null
+      }
+    ],
+    "status": "new",
+    "recommended_action": {
+      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "owner_role": "Project Manager",
+      "due_date": "Next working day",
+      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+    },
+    "metadata": {
+      "source": "case_builder_phase_1"
+    }
+  }
+]
