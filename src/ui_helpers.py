@@ -46,12 +46,12 @@ def display_case_summary(case: SlipRiskCase):
     st.write(f"**Status:** {case.status}")
     st.write(f"**Summary:** {case.summary}")
 
-    st.markdown("### Impact")
-    st.write("**Impacted Tasks:**", case.impacted_tasks or [])
-    st.write("**Impacted Milestones:**", case.impacted_milestones or [])
+    #st.markdown("### Impact")
+    #st.write("**Impacted Tasks:**", case.impacted_tasks or [])
+    #st.write("**Impacted Milestones:**", case.impacted_milestones or [])
 
-    st.markdown("### Structured JSON")
-    st.json(case.model_dump())
+    #st.markdown("### Structured JSON")
+    #st.json(case.model_dump())
 
 
 def display_evidence(evidence: List[EvidenceItem]):
@@ -113,3 +113,41 @@ def display_download_button(cases: List[SlipRiskCase]):
         file_name="slip_risk_cases.json",
         mime="application/json",
     )
+
+def generate_report_text(case: SlipRiskCase) -> str:
+    report = f"Case ID: {case.case_id}\n"
+    report += f"Title: {case.title}\n"
+    report += f"Severity: {case.severity}\n"
+    report += f"Confidence: {case.confidence}\n"
+    report += f"Status: {case.status}\n\n"
+    report += f"Summary:\n{case.summary}\n\n"
+    
+    if case.evidence:
+        report += "Evidence:\n"
+        for i, ev in enumerate(case.evidence, start=1):
+            report += f"Evidence {i}:\n"
+            report += f"  Source Type: {ev.source_type}\n"
+            report += f"  Source ID: {ev.source_id}\n"
+            report += f"  Quote: {ev.quote}\n"
+            if ev.relevance:
+                report += f"  Relevance: {ev.relevance}\n"
+        report += "\n"
+        
+    if case.recommended_action:
+        report += "Recommended Action:\n"
+        report += f"  Action: {case.recommended_action.action}\n"
+        report += f"  Owner Role: {case.recommended_action.owner_role}\n"
+        report += f"  Due Date: {case.recommended_action.due_date}\n"
+        report += f"  Rationale: {case.recommended_action.rationale}\n"
+        
+    return report
+
+def display_download_report_button(case: SlipRiskCase):
+    report_text = generate_report_text(case)
+    st.download_button(
+        label="Download Report",
+        data=report_text,
+        file_name=f"report_{case.case_id}.txt",
+        mime="text/plain",
+    )
+

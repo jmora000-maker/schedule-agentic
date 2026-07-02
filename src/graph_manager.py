@@ -214,7 +214,6 @@ class GraphManager:
                              issues: List[Issue], updates: List[TaskUpdate], 
                              delivery_notes: List[DeliveryNote], signals: List[RiskSignal]):
         # Populate task_id_to_uid_map first to support linkages
-        print(f" -> Building graph from artifacts.")
         for task in tasks:
             self.task_id_to_uid_map[str(task.task_id)] = str(task.task_uid)
 

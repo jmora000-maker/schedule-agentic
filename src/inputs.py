@@ -131,7 +131,6 @@ class ProjectArtifactLoader:
         return re.sub(r"[^a-z0-9]+", " ", (text or "").lower()).strip()
 
     def load_project_artifacts(self, project_dir: Path):
-        print(" -> Ingesting Project Artifacts.")
         self.tasks.extend(self.load_schedule_file(project_dir / "compact_schedule.xml"))
         self.load_meeting_notes(project_dir / "meeting_notes_v3.docx")
         #self.load_milestones(project_dir / "milestones.csv")
@@ -169,7 +168,6 @@ class ProjectArtifactLoader:
             return []
 
     def load_meeting_notes(self, path):
-        print(f" -> Loading meeting notes: {path.name}")
         if not path.exists():
             self.ingestion_failures[path.name] = self.ingestion_failures.get(path.name, 0) + 1
             return
@@ -180,7 +178,6 @@ class ProjectArtifactLoader:
         self.signals.extend(self.load_meeting_note_signals_from_lines(lines, path))
 
     def load_milestones(self, path: Path):
-        print(f" -> Loading milestones: {path.name}")
         if not path.exists():
             self.ingestion_failures[path.name] = self.ingestion_failures.get(path.name, 0) + 1
             return
@@ -206,7 +203,6 @@ class ProjectArtifactLoader:
                 ))
 
     def load_issue_log(self, path: Path):
-        print(f" -> Loading issue log: {path.name}")
         if not path.exists():
             self.ingestion_failures[path.name] = self.ingestion_failures.get(path.name, 0) + 1
             return
@@ -239,7 +235,6 @@ class ProjectArtifactLoader:
                 ))
 
     def load_task_updates(self, path: Path):
-        print(f" -> Loading task updates: {path.name}")
         if not path.exists():
             self.ingestion_failures[path.name] = self.ingestion_failures.get(path.name, 0) + 1
             return
@@ -268,7 +263,6 @@ class ProjectArtifactLoader:
                 ))
 
     def load_delivery_notes(self, path: Path):
-        print(f" -> Loading delivery notes: {path.name}")
         if not path.exists():
             self.ingestion_failures[path.name] = self.ingestion_failures.get(path.name, 0) + 1
             return
@@ -382,7 +376,6 @@ class ProjectArtifactLoader:
         return signals
 
     def load_schedule_file(self, path) -> List[ScheduleTask]:
-        print(f" -> Loading schedule file: {path.name}")
         if not path.exists():
             self.ingestion_failures[path.name] = self.ingestion_failures.get(path.name, 0) + 1
             return []

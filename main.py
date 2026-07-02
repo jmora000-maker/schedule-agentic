@@ -17,6 +17,7 @@ from src import llm, report
 from src.case_builder import build_cases
 from src.case_io import save_cases_to_json
 
+
 def run_pipeline(data_path: Path = Path("data")) -> dict:
     print("PIPELINE STARTED")
 
@@ -43,22 +44,16 @@ def run_pipeline(data_path: Path = Path("data")) -> dict:
     print("STEP 3: Running Rule Engine.")
     engine = RuleEngine(loader, graph)
     findings = engine.run()
-    print(f" -> Found {len(findings)} risk findings.")
 
     # 4. RAG and LLM
     print("STEP 4: RAG & LLM Synthesis.")
+    print(" -> This may take a few minutes.")
     rag_dir = vector_store_folder
     rag_engine = RAGEngine.load(rag_dir)
     if not rag_engine:
-        print(" -> Building RAG Engine.")
         rag_engine = RAGEngine(loader.raw_chunks)
         rag_engine.save(rag_dir)
-    else:
-        print(" -> Loaded RAG Engine from vector_store.")
 
-    print(f" -> Building evidence map for {len(findings)} findings.")
-
-    print(" -> Generating risk explanations using LLM.")
     explanations, evidence_map = llm.generate_explanations_and_evidence(findings, rag_engine, graph)
 
     # 5. Case Generation (Primary Output)

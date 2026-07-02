@@ -120,7 +120,6 @@ def fallback_next_action(finding: RiskFinding) -> str:
     return f"Review {target} immediately, confirm current dates/dependencies, and assign an owner for corrective action."
 
 def generate_risk_explanation(finding: RiskFinding, evidence: RetrievedEvidenceBundle) -> RiskExplanation:
-    print(f" -> Generating LLM explanation for finding {finding.finding_id}.")
     payload = build_finding_payload(finding, evidence)
     try:
         response = client.beta.chat.completions.parse(

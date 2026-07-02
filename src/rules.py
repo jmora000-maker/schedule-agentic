@@ -330,7 +330,6 @@ class RuleEngine:
         return findings_for_task
 
     def run(self) -> List[RiskFinding]:
-        print(" -> Running risk rules.")
         all_findings: List[RiskFinding] = []
         all_findings.extend(self.detect_milestone_drift())
         all_findings.extend(self.detect_dependency_delay())

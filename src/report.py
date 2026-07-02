@@ -96,7 +96,6 @@ def build_schedule_risk_report(
     evidence_map: Dict[str, RetrievedEvidenceBundle],
     milestones: List[Milestone]
 ) -> str:
-    print(" -> Building schedule risk report.")
     milestone_map = {m.milestone_id: m.name for m in milestones}
     ranked = rank_findings(findings)
     by_milestone = group_findings_by_milestone(ranked)
