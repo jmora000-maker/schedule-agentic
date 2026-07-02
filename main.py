@@ -6,7 +6,6 @@ Created: 2026-06-28
 Last Modified: 2026-07-01
 """
 
-
 from pathlib import Path
 from src.config import vector_store_folder
 from src.taxonomy import CorporateTaxonomyNormalizer
@@ -17,7 +16,6 @@ from src.rag import RAGEngine
 from src import llm, report
 from src.case_builder import build_cases
 from src.case_io import save_cases_to_json
-
 
 def run_pipeline(data_path: Path = Path("data")) -> dict:
     print("PIPELINE STARTED")

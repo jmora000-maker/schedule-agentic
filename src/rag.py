@@ -3,7 +3,7 @@ Script Name: rag.py
 Description: Retrieval-Augmented Generation engine for schedule-aware artifact retrieval.
 Author: James Mora
 Created: 2026-06-28
-Last Modified: 2026-06-29
+Last Modified: 2026-07-01
 """
 
 import json

@@ -1,4 +1,13 @@
+"""
+Script Name: main.py
+Description: Main entry point for the schedule-risk pipeline.
+Author: James Mora
+Created: 2026-06-28
+Last Modified: 2026-07-02
+"""
+
 import streamlit as st
+from src.config import data_folder
 from pathlib import Path
 from main import run_pipeline
 from src.ui_helpers import (
@@ -12,8 +21,9 @@ from src.ui_helpers import (
 
 st.set_page_config(page_title="Schedule Risk Dashboard", layout="wide")
 st.title("Schedule Risk Dashboard")
-st.caption("Structured case review for slip detection")
+st.caption("PHASE 1: Structured case review for slip detection")
 
+# Initialize session state
 if "cases" not in st.session_state:
     st.session_state["cases"] = []
 
@@ -24,6 +34,21 @@ if "selected_case_id" not in st.session_state:
 col_a, col_b = st.columns([1, 1])
 
 with col_a:
+    st.subheader("System Configuration")
+
+    # Check if the data folder exists
+    if data_folder.exists():
+
+        st.text(f"Files found in '{data_folder.name}'")
+        # iterdir() yields Path objects; we grab .name for just the filename
+        files = [f.name for f in data_folder.iterdir()]
+        st.write(files)
+
+    else:
+        st.error(f"Data directory '{data_folder}' does not exist. Please create it and add your files.")
+
+
+
     if st.button("Run Pipeline", type="primary"):
         with st.spinner("Running pipeline..."):
             result = run_pipeline(Path("data"))
@@ -36,6 +61,7 @@ with col_b:
     if st.session_state["cases"]:
         display_download_button(st.session_state["cases"])
 
+# Display selected case details
 cases = st.session_state["cases"]
 
 if cases:
