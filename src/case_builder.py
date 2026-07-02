@@ -7,7 +7,7 @@ Last Modified: 2026-07-01
 """
 
 from typing import List, Dict, Any
-from src.models import SlipRiskCase, EvidenceItem, RecommendedAction, RetrievedEvidenceBundle, ArtifactChunk
+from src.models import SlipRiskCase, EvidenceItem, RecommendedAction, RetrievedEvidenceBundle, ArtifactChunk, RiskExplanation
 from src.finding_adapter import finding_to_dict
 
 # --- CASE BUILDER ---
@@ -70,26 +70,28 @@ def _normalize_evidence(raw_evidence) -> List[EvidenceItem]:
 
 def _build_default_action(finding_data: dict, explanation_text: str) -> RecommendedAction:
     severity = str(finding_data.get("severity", "medium")).lower()
-
+    finding_id = finding_data.get("id", "unknown")
+    signal_type = finding_data.get("signal_type", "issue").replace("_", " ")
+    
     if severity in {"high", "critical"}:
         return RecommendedAction(
-            action="Review immediately and assign an owner to validate impact and recovery options.",
+            action=f"Analyze {signal_type} for finding {finding_id} immediately. Validate impact on the schedule and define a recovery plan.",
             owner_role="Project Manager",
             due_date="Next working day",
-            rationale="Severity indicates likely schedule impact requiring fast triage."
+            rationale=f"Severity {severity} indicates likely schedule impact for {finding_id} requiring fast triage. Context: {explanation_text[:100]}"
         )
 
     return RecommendedAction(
-        action="Review in weekly risk triage and confirm whether intervention is needed.",
+        action=f"Monitor {signal_type} for finding {finding_id} during weekly triage and evaluate if intervention is necessary.",
         owner_role="Project Manager",
         due_date="This week",
-        rationale="Initial signal exists , but urgency appears moderate."
+        rationale=f"Initial signal exists for {finding_id}, but urgency appears moderate. Context: {explanation_text[:100]}"
     )
 
 
 def build_cases(
     findings: List[Any],
-    explanations: Dict[str, str],
+    explanations: Dict[str, RiskExplanation],
     evidence_map: Dict[str, List[Any]],
 ) -> List[SlipRiskCase]:
     cases: List[SlipRiskCase] = []
@@ -108,6 +110,16 @@ def build_cases(
         impacted_tasks = finding_data["impacted_tasks"]
         impacted_milestones = finding_data["impacted_milestones"]
 
+        if explanation and explanation.recommended_action:
+            recommended_action = RecommendedAction(
+                action=explanation.recommended_action,
+                owner_role="Project Manager",
+                due_date="Next working day",
+                rationale=explanation.summary
+            )
+        else:
+            recommended_action = _build_default_action(finding_data, summary)
+
         case = SlipRiskCase(
             case_id=f"case-{finding_id}",
             finding_id=finding_id,
@@ -118,7 +130,7 @@ def build_cases(
             impacted_tasks=list(impacted_tasks),
             impacted_milestones=list(impacted_milestones),
             evidence=_normalize_evidence(raw_evidence),
-            recommended_action=_build_default_action(finding_data, summary),
+            recommended_action=recommended_action,
             metadata={
                 "source": "case_builder_phase_1"
             }

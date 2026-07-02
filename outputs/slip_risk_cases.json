@@ -64,10 +64,10 @@
     ],
     "status": "new",
     "recommended_action": {
-      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "action": "Escalate the delay issue with the Requirements and Design team for immediate resolution.",
       "owner_role": "Project Manager",
       "due_date": "Next working day",
-      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+      "rationale": "Task 'Build' is impacted by delayed predecessor(s)."
     },
     "metadata": {
       "source": "case_builder_phase_1"
@@ -77,7 +77,7 @@
     "case_id": "case-VENDOR_DELAY-TASK-4",
     "finding_id": "VENDOR_DELAY-TASK-4",
     "title": "task UID 4 and milestone 7 - vendor_risk",
-    "summary": "Vendor task 'Vendor Delivery' has vendor-related risk signals due to a schedule slip.",
+    "summary": "Vendor task 'Vendor Delivery' has vendor-related risk signals indicating potential delays.",
     "severity": "high",
     "confidence": 0.75,
     "impacted_tasks": [
@@ -102,10 +102,10 @@
     ],
     "status": "new",
     "recommended_action": {
-      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "action": "Escalate the vendor delivery issue to ensure timely resolution and prevent further delays.",
       "owner_role": "Project Manager",
       "due_date": "Next working day",
-      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+      "rationale": "Vendor task 'Vendor Delivery' has vendor-related risk signals indicating potential delays."
     },
     "metadata": {
       "source": "case_builder_phase_1"
@@ -176,10 +176,10 @@
     ],
     "status": "new",
     "recommended_action": {
-      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "action": "Escalate the delays in 'Build' and 'Vendor Delivery' to secure immediate resolutions.",
       "owner_role": "Project Manager",
       "due_date": "Next working day",
-      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+      "rationale": "Task 'Integration and Test' is impacted by delayed predecessor(s)."
     },
     "metadata": {
       "source": "case_builder_phase_1"
@@ -189,7 +189,7 @@
     "case_id": "case-READINESS_RISK-TASK-6",
     "finding_id": "READINESS_RISK-TASK-6",
     "title": "task UID 6 and milestone 7 - readiness_risk",
-    "summary": "The 'Deployment Readiness' task is at risk due to delays in upstream tasks.",
+    "summary": "The 'Deployment Readiness' task is at risk due to delays in upstream tasks affecting the schedule.",
     "severity": "high",
     "confidence": 0.65,
     "impacted_tasks": [
@@ -226,10 +226,10 @@
     ],
     "status": "new",
     "recommended_action": {
-      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "action": "Confirm the new schedule for the 'Deployment Readiness' task and communicate with stakeholders.",
       "owner_role": "Project Manager",
       "due_date": "Next working day",
-      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+      "rationale": "The 'Deployment Readiness' task is at risk due to delays in upstream tasks affecting the schedule."
     },
     "metadata": {
       "source": "case_builder_phase_1"
@@ -264,10 +264,10 @@
     ],
     "status": "new",
     "recommended_action": {
-      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "action": "Validate the latest status and confirm whether the schedule dates still reflect current reality.",
       "owner_role": "Project Manager",
       "due_date": "Next working day",
-      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+      "rationale": "Task 'Production Signoff Milestone' is impacted by delayed predecessor(s)."
     },
     "metadata": {
       "source": "case_builder_phase_1"
@@ -277,7 +277,7 @@
     "case_id": "case-STALE_UPDATES-TASK-2",
     "finding_id": "STALE_UPDATES-TASK-2",
     "title": "task UID 2 and milestone 7 - status_risk",
-    "summary": "Task 'Requirements and Design' has stale updates or health issues.",
+    "summary": "Task 'Requirements and Design' has stale updates or health issues, indicating a lack of recent progress reporting.",
     "severity": "high",
     "confidence": 0.75,
     "impacted_tasks": [
@@ -308,10 +308,10 @@
     ],
     "status": "new",
     "recommended_action": {
-      "action": "Review immediately and assign an owner to validate impact and recovery options.",
+      "action": "Escalate the lack of updates on Task 'Requirements and Design' to ensure timely resolution and prevent further delays.",
       "owner_role": "Project Manager",
       "due_date": "Next working day",
-      "rationale": "Severity indicates likely schedule impact requiring fast triage."
+      "rationale": "Task 'Requirements and Design' has stale updates or health issues, indicating a lack of recent progress reporting."
     },
     "metadata": {
       "source": "case_builder_phase_1"

@@ -25,6 +25,7 @@ def finding_to_dict(finding: Any, fallback_id: str) -> dict:
         return {
             "id": finding.get("finding_id", finding.get("id", fallback_id)),
             "title": f"{target} - {signal_type}",
+            "signal_type": signal_type,
             "severity": finding.get("severity", "medium"),
             "confidence": float(finding.get("confidence", 0.5)),
             "impacted_tasks": [str(task_uid)] if task_uid else [],
@@ -42,6 +43,7 @@ def finding_to_dict(finding: Any, fallback_id: str) -> dict:
     return {
         "id": getattr(finding, "finding_id", getattr(finding, "id", fallback_id)),
         "title": f"{target} - {signal_type}",
+        "signal_type": signal_type,
         "severity": getattr(finding, "severity", "medium"),
         "confidence": float(getattr(finding, "confidence", 0.5)),
         "impacted_tasks": [str(task_uid)] if task_uid else [],
