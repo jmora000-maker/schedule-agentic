@@ -69,8 +69,6 @@ with col_a:
     else:
         console_logs.info("Click 'Execute Schedule Risk Pipeline' button to begin.")
 
-
-
 with col_b:
     st.subheader("Case Management")
     # Display selected case details
@@ -94,11 +92,7 @@ with col_b:
         display_case_summary(selected_case)
         display_action_panel(selected_case)
         display_download_report_button(selected_case)
-    # 3: Display only the evidence here
-    if st.session_state.get("selected_case_id"):
-        # Fetch the selected case again to display evidence
-        cases = st.session_state["cases"]
-        selected_case = next(c for c in cases if c.case_id == st.session_state["selected_case_id"])
+
 
 
 

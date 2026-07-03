@@ -39,7 +39,7 @@ def update_case_in_state(updated_case: SlipRiskCase):
 
 
 def display_case_summary(case: SlipRiskCase):
-    st.markdown("### Case Summary")
+    st.subheader("Case Summary")
     st.write(f"**Title:** {case.title}")
     st.write(f"**Severity:** {case.severity}")
     st.write(f"**Confidence:** {case.confidence}")
@@ -68,9 +68,8 @@ def display_evidence(evidence: List[EvidenceItem]):
         st.write("No evidence attached.")
 
 
-def display_action_panel(case: SlipRiskCase):
-    st.markdown("### Action Panel")
-
+def display_status_control(case: SlipRiskCase):
+    st.subheader("Status")
     new_status = st.selectbox(
         "Update status",
         ["new", "reviewing", "assigned", "deferred", "resolved"],
@@ -85,7 +84,8 @@ def display_action_panel(case: SlipRiskCase):
         update_case_in_state(case)
         st.success(f"Case status updated to '{new_status}'")
 
-    st.markdown("### Recommended Action")
+def display_recommended_action(case: SlipRiskCase):
+    st.subheader("Recommended Action")
     if case.recommended_action:
         st.write(f"**Action:** {case.recommended_action.action}")
         st.write(f"**Owner Role:** {case.recommended_action.owner_role}")
@@ -94,7 +94,8 @@ def display_action_panel(case: SlipRiskCase):
     else:
         st.write("No recommendation available.")
 
-    st.markdown("### Manual Triage Notes")
+def display_triage_notes_control(case: SlipRiskCase):
+    st.subheader("Manual Triage Notes")
     triage_note = st.text_area("Add reviewer note", key=f"note_{case.case_id}")
 
     if st.button("Save Note"):
@@ -105,6 +106,11 @@ def display_action_panel(case: SlipRiskCase):
         update_case_in_state(case)
         st.success("Note saved")
 
+def display_action_panel(case: SlipRiskCase):
+    display_recommended_action(case)
+    display_status_control(case)
+    display_triage_notes_control(case)
+
 def display_download_button(cases: List[SlipRiskCase]):
     cases_json = [c.model_dump() for c in cases]
     st.download_button(
@@ -112,6 +118,7 @@ def display_download_button(cases: List[SlipRiskCase]):
         data=json.dumps(cases_json, indent=2),
         file_name="slip_risk_cases.json",
         mime="application/json",
+        type="primary"
     )
 
 def generate_report_text(case: SlipRiskCase) -> str:
@@ -134,7 +141,6 @@ def generate_report_text(case: SlipRiskCase) -> str:
         report += "\n"
         
     if case.recommended_action:
-        report += "Recommended Action:\n"
         report += f"  Action: {case.recommended_action.action}\n"
         report += f"  Owner Role: {case.recommended_action.owner_role}\n"
         report += f"  Due Date: {case.recommended_action.due_date}\n"
@@ -149,5 +155,7 @@ def display_download_report_button(case: SlipRiskCase):
         data=report_text,
         file_name=f"report_{case.case_id}.txt",
         mime="text/plain",
+        type="primary"
+
     )
 
